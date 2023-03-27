@@ -42,3 +42,10 @@ Route::prefix('application')->group(function () {
     Route::post('/show/{applicationId}', 'App\Http\Controllers\ApplicationController@show');
     Route::post('/delete/{applicationId}', 'App\Http\Controllers\ApplicationController@show');
 });
+
+Route::prefix('map')->group(function () {
+    Route::get('/borehole/show', 'App\Http\Controllers\BoreholeController@show');
+    Route::get('/borehole/get-json', 'App\Http\Controllers\BoreholeController@json');
+});
+
+//Route::get('/test/load', 'App\Http\Controllers\TestController@test');

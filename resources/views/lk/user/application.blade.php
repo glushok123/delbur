@@ -37,6 +37,8 @@
                                     <label><b>Дата начала проведения работ:</b> {{ \Carbon\Carbon::parse($item->date_start)->format('d.m.Y') }}</label>
                                     <label><b>Материал:</b> {{ $item->material }}</label>
                                     <label><b>Желаемый бюджет: до </b> {{ $item->acceptable_price }}</label>
+                                    <label><b>Предпологаемая глубина скважины (Песок):  </b> {{ $item->depth_sand }} м.</label>
+                                    <label><b>Предпологаемая глубина скважины (Артезианская): </b> {{ $item->depth_artesian }} м.</label>
                                     <label><b>Комментарий:</b> {{ $item->comment }}</label>
                                 </div>
                             </div>

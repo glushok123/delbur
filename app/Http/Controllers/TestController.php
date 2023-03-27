@@ -3,83 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Models\Test;
+use App\Models\Borehole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use \Illuminate\Database\Eloquent\Collection;
 
 class TestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function test()
     {
-        //
-    }
+        $data = Http::acceptJson()->get('https://www.aqabur.ru/karta-glubin/mapdata.json?cache=1undefined')->json();
+        $count = 0;
+        foreach($data['features'] as $item) {
+            try {
+                $count = $count + 1;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+                $myArray = explode('<br>', $item['properties']['balloonContent']);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Test $test)
-    {
-        //
-    }
+                $borehole = new Borehole();
+                $borehole->y = $item['geometry']['coordinates'][0];
+                $borehole->x = $item['geometry']['coordinates'][1];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Test $test)
-    {
-        //
-    }
+                foreach($myArray as $itemArray) {
+                    if (str_contains($itemArray, 'Буровая компания:')) {
+                        $borehole->name_company = str_replace('Буровая компания: ', '', $itemArray);
+                    }
+                    if (str_contains($itemArray, 'Глубина скважин:')) {
+                        $borehole->depth =  str_replace('Глубина скважин: ', '', $itemArray);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Test $test)
-    {
-        //
-    }
+                    }
+                    if (str_contains($itemArray, '+7')) {
+                        $borehole->phone_company = $itemArray;
+                    }
+                }
+                $borehole->hintContent =  $item['properties']['hintContent'];
+                $borehole->balloonContentHeader =  $item['properties']['balloonContentHeader'];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Test $test)
-    {
-        //
+                $borehole->save();
+            }
+            catch (exception $e) {
+                continue;
+            }
+        }
     }
 }

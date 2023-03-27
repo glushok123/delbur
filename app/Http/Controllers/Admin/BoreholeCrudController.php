@@ -43,6 +43,8 @@ class BoreholeCrudController extends CrudController
         CRUD::column('y');
         CRUD::column('z');
         CRUD::column('depth');
+        CRUD::column('hintContent');
+        CRUD::column('balloonContentHeaders');
         CRUD::column('name_company');
         CRUD::column('phone_company');
         CRUD::column('created_at');
@@ -69,6 +71,8 @@ class BoreholeCrudController extends CrudController
         CRUD::field('y');
         CRUD::field('z');
         CRUD::field('depth');
+        CRUD::field('hintContent');
+        CRUD::field('balloonContentHeaders');
         CRUD::field('name_company');
         CRUD::field('phone_company');
 

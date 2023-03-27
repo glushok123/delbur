@@ -36,11 +36,11 @@
     <script src="{{ asset('js/app-custom.js') }}" defer></script>
     <style>
         .banner{
-            background-image: url({{ url('/public/uploads', [ 'name' => 'upload_043052bf7cfd55ec34916a7824b1df4c.png'])  }});
+            background-image: url({{ url('/public/uploads', [ 'name' => 'photo_2023-03-27_18-51-52.jpg'])  }});
             background-position: center;
             
             background-repeat: no-repeat;
-            background-color: #f0fed3; 
+            background-color: #9bd3e2; 
         }
     </style>
 @endsection

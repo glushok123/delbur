@@ -94,6 +94,22 @@
                     <hr>
                     <div class='row'>
                         <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4">
+                            Знаете ли Вы глубину скважины у ближайшего соседа? 
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="depth-sand" name='depth_sand' placeholder="0">
+                                <label for="depth-sand">Песок</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="depth-artesian" name='depth_artesian' placeholder="0">
+                                <label for="depth-artesian">Артезианская</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='row'>
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4">
                             Какой вариант материала? (<a href="#">Подробнее</a>)
                         </div>
                         <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8">

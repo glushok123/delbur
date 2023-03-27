@@ -22,7 +22,6 @@ class ApplicationController extends Controller
         if ($user->hasRole('Пользователь') == false) {
             abort(404);
         }
-        //dd($request->all());
 
         $application = new Application();
         $application->user_id = $user->id;
@@ -36,6 +35,8 @@ class ApplicationController extends Controller
         $application->coordinate_x = $request->coordinate_x;
         $application->coordinate_y = $request->coordinate_y;
         $application->acceptable_price = $request->acceptable_price;
+        $application->depth_sand = $request->depth_sand;
+        $application->depth_artesian = $request->depth_artesian;
         $application->save();
 
         return response()->json([

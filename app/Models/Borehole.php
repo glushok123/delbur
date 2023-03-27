@@ -10,4 +10,23 @@ class Borehole extends Model
 {
     use CrudTrait;
     use HasFactory;
+
+    /**
+     * @var string
+     */
+    protected $table = 'boreholes';
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'x', 
+        'y', 
+        'z', 
+        'depth', 
+        'name_company', 
+        'phone_company', 
+        'hintContent', 
+        'balloonContentHeader', 
+    ];
 }

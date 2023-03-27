@@ -63,7 +63,10 @@
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				  <li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{{ url('/') }}">Каталог </a>
+						<a class="nav-link active" aria-current="page" href="{{ url('/') }}"> Каталог </a>
+				  </li>
+				  <li class="nav-item">
+						<a class="nav-link text-nowrap" aria-current="page" href="{{ url('/map/borehole/show') }}"> Карта скважин </a>
 				  </li>
 				  <!--li class="nav-item">
 					<a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#marketologModal">Маркетологам </a>
